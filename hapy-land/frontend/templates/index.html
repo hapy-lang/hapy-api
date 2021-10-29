@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+
+{% block navbar %}
+{% endblock %}
+
+	<h1>Hapy</h1>
+			<p>...Hausa & English in Coding Symphony</p>
+		This is the beta release/version of the Hapy site, more changes to come soon.
+
+	{% include "partials/navbar.html" %}
+
+
+	<h3>GETTING STARTED</h3>
+	<ol>
+		<li> Check if Python is installed globally. If not, download it <a href="https://www.python.org/downloads/"> here</a></li>
+		<li> Install Hapy globally. Type in this command in your command prompt:
+			<p><strong>pip install Hapy</strong></p></li>
+		<li>Then check if the installation was successful by typing this command on a new line:
+			<p><strong>hapy --version</strong></p></li>
+		<li>Congratulations, Hapy is now installed on your system. Check out example codes <a href="/examples">here</a></li>
+
+	</ol>
+{% endblock %}

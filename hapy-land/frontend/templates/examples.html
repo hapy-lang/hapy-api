@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+
+<h3>EXAMPLES</h3>
+	<p>Here are some Hapy code examples you could try out on the editor.</p>
+	<ul>
+	<li>
+		<h4><a href="/examples/1">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+
+		<li><h4><a href="/examples/2">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+
+		<li><h4><a href="/examples/3">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+	</li>
+
+	</ul>
+{% endblock %}

@@ -1,17 +1,19 @@
 from fastapi import FastAPI
-from api.main import api 
-from backend.main import backend
+from api.main import api
+from frontend.main import frontend
 
 
 app = FastAPI()
 
 # SUB APPS
 # api
-# backend
+# frontend
+
 
 @app.get("/home")
 def home():
     return "Thank you Jesus!"
 
+
 app.mount("/api", api)
-app.mount("/", backend)
+app.mount("/", frontend)

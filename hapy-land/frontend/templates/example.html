@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+	<h3>EXAMPLE {{ id }} </h3>
+These are the solutions to example {{ id }}
+
+	<ul>
+	<li>
+		<h4><a href="">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+
+		<li><h4><a href="">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+
+		<li><h4><a href="">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+	</li>
+
+	</ul>
+{% endblock %}

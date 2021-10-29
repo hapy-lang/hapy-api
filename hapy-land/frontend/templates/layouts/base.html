@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <title>{% block title %}{% endblock %} - Hapy Land</title>
+    {% endblock %}
+</head>
+<body>
+
+    {% block navbar %}
+    <h2>NAVIGATION BAR</h2>
+    <ul>
+    <li><strong><a href="/">HOME</a></strong></li>
+    <li><strong><a href="/examples">EXAMPLES</a></strong></li>
+    <li><strong><a href="/bites">BITES</a></strong></li>
+    </ul>
+    {% endblock %}
+
+    <main id="content">{% block content %}{% endblock %}</main>
+    <footer id="footer">
+        {% block footer %}
+        &copy; Copyright 2021 Hapy
+        {% endblock %}
+    </footer>
+</body>
+</html>

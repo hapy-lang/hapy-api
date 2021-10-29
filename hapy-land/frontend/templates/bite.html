@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+<h3>BITE {{ id }}</h3>
+<p>This is code for Bite {{ id }}</p>
+
+		<h4>A + B</h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+{% endblock %}
+<!-- content -->

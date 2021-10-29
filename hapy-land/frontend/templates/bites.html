@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+	<h3>BITES</h3>
+<p>These are user-generated codes to test their use of Hapy</p>
+<ul>
+	<li>
+		<h4><a href="/bites/1">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+
+		<li><h4><a href="/bites/2">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+
+		<li><h4><a href="/bites/3">A + B</a></h4>
+		<p>Author:
+		<br>Short Description:
+		<br>Date Modified:
+		</p>
+	</li>
+</ul>
+{% endblock %}
