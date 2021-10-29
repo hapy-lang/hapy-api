@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from api.main import api 
-from backend.main import backend 
+from backend.main import backend
 
 
 app = FastAPI()
