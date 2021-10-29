@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>EXAMPLE {{ id }}</title>
-</head>
-<body>
+{% extends "layouts/base.html" %}
 
-	<h2><p>NAVIGATION BAR</h2>
-		<ul>
-		<li><strong><a href="/">HOME</a></strong></li>	
-		<li><strong><a href="/examples">EXAMPLES</a></strong></li>
-		<li><strong><a href="/bites">BITES</a></strong></li>
-		</ul></p>
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
 
+<!-- content -->
+{% block content %}
 	<h3>EXAMPLE {{ id }} </h3>
 These are the solutions to example {{ id }}
 
@@ -21,21 +15,20 @@ These are the solutions to example {{ id }}
 		<h4><a href="">A + B</a></h4>
 		<p>Author:
 		<br>Short Description:
-		<br>Date Modified:	
+		<br>Date Modified:
 
 		<li><h4><a href="">A + B</a></h4>
 		<p>Author:
 		<br>Short Description:
-		<br>Date Modified:	 
+		<br>Date Modified:
 		</p>
 
 		<li><h4><a href="">A + B</a></h4>
 		<p>Author:
 		<br>Short Description:
-		<br>Date Modified:	 
+		<br>Date Modified:
 		</p>
 	</li>
 
 	</ul>
-</body>
-</html>
+{% endblock %}

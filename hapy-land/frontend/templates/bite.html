@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>BITE {{ id }}</title>
-</head>
-<body>
+{% extends "layouts/base.html" %}
 
-	<h2><p>NAVIGATION BAR</h2>
-		<ul>
-		<li><strong><a href="/">HOME</a></strong></li>	
-		<li><strong><a href="/examples">EXAMPLES</a></strong></li>
-		<li><strong><a href="/bites">BITES</a></strong></li>
-		</ul></p>
+{% block title %}Bite {{ id }} {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
 
-	<h3>BITE {{ id }}</h3>
+<!-- content -->
+{% block content %}
+<h3>BITE {{ id }}</h3>
 <p>This is code for Bite {{ id }}</p>
 
 		<h4>A + B</h4>
@@ -21,6 +15,5 @@
 		<br>Short Description:
 		<br>Date Modified:
 		</p>
-
-</body>
-</html>
+{% endblock %}
+<!-- content -->
