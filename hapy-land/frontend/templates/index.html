@@ -8,24 +8,45 @@
 <!-- content -->
 {% block content %}
 
-{% block navbar %}
-{% endblock %}
+	<div class="row">
+		<div class="col">
+			<h1 class="mt-5">HapyLand</h1><p>Hausa & English in Coding Symphony</p>
+		This is the beta release/version of the Hapy site, more changes to come soon :)
 
-	<h1>Hapy</h1>
-			<p>...Hausa & English in Coding Symphony</p>
-		This is the beta release/version of the Hapy site, more changes to come soon.
-
-	{% include "partials/navbar.html" %}
-
-
+<p></p>
 	<h3>GETTING STARTED</h3>
 	<ol>
 		<li> Check if Python is installed globally. If not, download it <a href="https://www.python.org/downloads/"> here</a></li>
 		<li> Install Hapy globally. Type in this command in your command prompt:
-			<p><strong>pip install Hapy</strong></p></li>
+			<p></p>
+
+			<p style="background-color: gray; height: 30px;"><strong>pip install Hapy</strong></p></li>
+
 		<li>Then check if the installation was successful by typing this command on a new line:
-			<p><strong>hapy --version</strong></p></li>
-		<li>Congratulations, Hapy is now installed on your system. Check out example codes <a href="/examples">here</a></li>
+
+			<p></p>
+
+			<p style="background-color: gray; height: 30px;"><strong>hapy --version</strong></p></li>
+
+		<li>Congratulations! Hapy is now installed on your system. Check out example codes <a href="/examples">here</a></li>
 
 	</ol>
+		</div>
+
+		<div id="editor" class="col mt-5">
+			<div id="editor-input">
+				<h5>Editor</h5>
+				<textarea rows="15" cols="80">
+					Start typing...
+				</textarea>
+
+				<h5>Output</h5>
+				<div style="background-color: gray;height: 30px;">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
 {% endblock %}
