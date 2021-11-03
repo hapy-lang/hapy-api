@@ -9,9 +9,11 @@ app = FastAPI()
 # api
 # frontend
 
+
 @app.get("/home")
 def home():
     return "Thank you Jesus!"
+
 
 app.mount("/api", api)
 app.mount("/", frontend)
