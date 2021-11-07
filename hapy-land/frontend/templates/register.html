@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Register {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div>
+	<form>
+		<label for="username">Username</label>
+		<input type="text" name="username">
+
+		<br>
+
+		<label for="email">E-mail</label>
+		<input type="text" name="email">
+
+		<br>
+
+		<label for="password">Password</label>
+		<input type="password" name="password">
+
+		<br>
+
+		<label for="password">Confirm Password</label>
+		<input type="password" name="password">
+
+		<br>
+
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<button class="btn btn-primary me-md-2" type="button">Submit</button>
+    	</div>
+
+
+	</form>
+</div>
+
+
+{% endblock %}
