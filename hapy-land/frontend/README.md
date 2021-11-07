@@ -1,1 +1,1 @@
-### The Hapy Land Website frontend thingy
+### The Hapy Land Website (frontend development)
