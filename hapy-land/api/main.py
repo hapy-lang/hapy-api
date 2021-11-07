@@ -85,40 +85,51 @@ def login_user(user: User, response: Response):
         }
 
 
-def execute(code, option):
-    if code:
-        code_in_python = transpile(code)
-        result = run_python(code_in_python, return_output=True, cloud=True)
-        result = result[1] if result[1] else result[0]
-        translated = (
-            code_in_python
-            if option in ("translate_only", "translate_and_execute")
-            else None
-        )
+def execute(req):
+    translated = None
+    python_result = None
+    try:
+        if req.code:
+            code_in_python = transpile(req.code)
+            result = "No output"
+            error = ""
+            # if compile only is true
+            if not req.compile_only:
+                result = run_python(code_in_python, return_output=True, cloud=True)
+                python_result = result[1] if result[1] else result[0]
+                error = result[0]
+            translated = code_in_python
 
-        python_result = (
-            result if option in ("execute_only", "translate_and_execute") else None
-        )
+
+            return {
+                "data": {
+                    "python_result": python_result,
+                    "python_source": translated,
+                    "error": error
+                },
+                "status": "success" if (python_result or translated) else "error",
+                "message": "Hapy output" if not error else "Error while compiling Hapy!",
+            }
         return {
-            "data": {
-                "python_result": python_result,
-                "python_source": translated,
-            },
-            "status": "success" if (python_result or translated) else "error",
-            "message": "Hapy output",
+            "data": {"python_result": None, "python_source": None},
+            "status": "error",
+            "message": "Invalid code/ or file",
         }
-    return {
-        "data": {"python_result": None, "python_source": None},
-        "status": "error",
-        "message": "Invalid code/ or file",
-    }
+    except Exception as e:
+        return {
+            "data": {"error": str(e)},
+            "status": "error",
+            "message": "Error while compiling Hapy",
+        }
+
+
 
 
 @api.post("/run", response_model=RequestResponse, status_code=status.HTTP_200_OK)
 def run(item: Request):
     """Execute code, transpile code, execute and transpile"""
     if item.code:
-        return execute(item.code, item.option)
+        return execute(req=item)
     else:
         return {
             "data": {"python_result": None, "python_source": None},

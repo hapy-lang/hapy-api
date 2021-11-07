@@ -38,4 +38,8 @@ def login(request: Request):
 def register(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
+@frontend.get("/editor", response_class=HTMLResponse)
+def editor(request: Request):
+    return templates.TemplateResponse("editor.html", {"request": request})
+
 

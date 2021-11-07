@@ -7,6 +7,7 @@ from typing import Optional, Dict
 class Request(BaseModel):
     code: str
     option: str
+    compile_only: bool = False
     save: bool = False
 
     class Config:
