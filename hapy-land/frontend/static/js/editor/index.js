@@ -1,5 +1,9 @@
 require.config({ paths: { vs: 'static/node_modules/monaco-editor/min/vs' } });
 
+// elements
+var outputContainer =  document.getElementById("output");
+var pythonCodeContainer = document.getElementById("python_code");
+
 require(['vs/editor/editor.main'], function () {
 
     monaco.languages.register({
@@ -50,14 +54,23 @@ function getCode() {
 };
 
 function reset() {
-    document.getElementById("output").innerText = "";
-            document.getElementById("output").style.borderColor = "initial";
-            document.getElementById("python_code").innerText = "!"
+    outputContainer.innerText = "";
+            outputContainer.style.borderColor = "initial";
+            pythonCodeContainer.innerText = "!"
+}
+
+function loading() {
+    document.getElementById("loader").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+    }, 1000)
 }
 
 async function runcode() {
 
     reset();
+    loading();
 
     let code = window.editor.getValue();
     let compile_only = document.getElementById("compile_only");
@@ -86,19 +99,19 @@ async function runcode() {
             console.log(res);
 
             if (res.status == "error" || res.data.error) {
-            document.getElementById("output").innerText = res.data.error;
-            document.getElementById("output").style.borderColor = "red";
-            document.getElementById("python_code").innerText = "ERROR!";
+            outputContainer.innerText = res.data.error;
+            outputContainer.style.borderColor = "red";
+            pythonCodeContainer.innerText = "ERROR!";
             } else {
-                document.getElementById("output").innerText = res.data.python_result;
-                document.getElementById("python_code").innerText = res.data.python_source;
+                outputContainer.innerText = res.data.python_result;
+                pythonCodeContainer.innerText = res.data.python_source;
             }
         }else {
             console.log(response);
 
-            document.getElementById("output").innerText = "ERROR!";
-            document.getElementById("output").style.borderColor = "red";
-            document.getElementById("python_code").innerText = "ERROR!";
+            outputContainer.innerText = "ERROR!";
+            outputContainer.style.borderColor = "red";
+            pythonCodeContainer.innerText = "ERROR!";
         }
     });
 
