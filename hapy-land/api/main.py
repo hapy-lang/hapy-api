@@ -1,5 +1,5 @@
 from datetime import datetime
-from fastapi import FastAPI, status, HTTPException, Response, File, UploadFile, Form
+from fastapi import FastAPI, status, Depends, HTTPException, Response, File, UploadFile, Form
 from sqlalchemy.orm import Session
 from typing import Optional
 
@@ -9,9 +9,13 @@ from hapy.exector import run as run_python
 
 
 # Local  imports aka imports from the lib.
-from .database import SessionLocal
-from .models import BiteBase, Challenge, User as UserModel
-from .pydantic_models import Request, User, RequestResponse
+from .database import SessionLocal, engine
+from . import models
+from .schemas import Request, User, RequestResponse
+from .users import router as users_router
+from .bites import router as bites_router
+from .challenges import router as challenges_router
+from sqlalchemy_utils import create_database, database_exists
 
 
 api = FastAPI()
@@ -21,70 +25,24 @@ api = FastAPI()
 # Update
 # Delete CRUD
 
-db = SessionLocal()
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
+if not database_exists(engine.url):
+        create_database(engine.url)
 
-@api.get("/challenges")
-def index(limit: int = 10):
-    # Fetch all bites from the data store.
-    fetch_all = db.query(Challenge).limit(limit).all()
-    return {"data": fetch_all}
+models.Base.metadata.create_all(engine)
 
+api.include_router(users_router)
+api.include_router(bites_router)
+api.include_router(challenges_router)
 
-@api.post("/register", status_code=status.HTTP_201_CREATED)
-def register_user(new_user: User):
-    """A Post request to send new user data and write it to a data store."""
-    username = new_user.username
-    timestamp = datetime.now()
-    email = new_user.email
-    # Hash the password
-    password = new_user.password
-    register = UserModel(
-        username=username, timestamp=timestamp, password=password, email=email
-    )
-
-    # Verify That this user does not exist
-    db_user = (
-        db.query(UserModel).filter(UserModel.username == new_user.username).count()
-    )
-    if db_user > 0:
-        raise HTTPException(status_code=400, detail="User already exists")
-
-    db.add(register)
-    db.commit()
-    db.refresh(register)
-    # return register
-    return {
-        "data": {"username": new_user.username},
-        "status": "success",
-        "message": "Successfully created new user.",
-    }
-
-
-@api.post("/login/", response_model=RequestResponse)
-def login_user(user: User, response: Response):
-    """Authenticate user by sending user credentials"""
-    get_user = db.query(UserModel).filter(UserModel.username == user.username)
-    if get_user.count() == 1:
-        # Set Cookie
-        response.set_cookie(key=get_user.first().username, value="random")
-        print(f"\n\n\n\n{response}\n\n\n\n")
-        return {
-            "data": {"user": get_user.first().username},
-            "message": "Successfully returned user",
-            "status": "success",
-        }
-    elif get_user.count() > 1:
-        # This should not be the case. However, get ready yo log an issue
-        pass
-    else:
-        return {
-            "data": {"user": None},
-            "message": "User does not exist",
-            "status": "failed",
-        }
-
-
+# TODO: maybe should be moved...
 def execute(req):
     translated = None
     python_result = None
@@ -121,9 +79,6 @@ def execute(req):
             "status": "error",
             "message": "Error while compiling Hapy",
         }
-
-
-
 
 @api.post("/run", response_model=RequestResponse, status_code=status.HTTP_200_OK)
 def run(item: Request):
