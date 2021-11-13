@@ -1,0 +1,12 @@
+#output {
+    border: 2px solid mediumspringgreen;
+        background-color: #1e1e1e;
+        color: #eee;
+    }
+
+#python_code {
+    white-space: pre-wrap;
+    border: 2px solid greenyellow;
+    background-color: #1e1e1e;
+    color: #eee;
+}

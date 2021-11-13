@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Hapy Editor {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+		<h2>Edit Hapy Code</h2>
+        Select Them: <select id="themeselect">
+            <option>vs</option>
+            <option>vs-dark</option>
+            <option>hc-dark</option>
+        </select>
+        <div class="row">
+            <div class="col">
+                <button onclick="runcode()" style="float: right;" class="btn btn-dark">Run</button>
+                <label>
+                    <input id="compile_only" type="checkbox">Compile Only
+                </label>
+                <div id="container" class="mt-3" style="width: 600px; height: 400px; border: 1px solid grey"></div>
+            </div>
+
+            <div class="col">
+
+                <h5>Output</h5>
+                <div id="output" class="p-2 rounded-3"></div>
+
+                <h5>Python</h5>
+                <div id="python_code" class="p-2 rounded-3"></div>
+            </div>
+        </div>
+
+        <div id="errors">
+
+        </div>
+
+		<!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
+		<script src="static/node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="static/js/editor/monarch-settings.js"></script>
+		<script src="static/js/editor/index.js"></script>
+{% endblock %}
