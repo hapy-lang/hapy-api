@@ -1,8 +1,8 @@
 {% extends "layouts/base.html" %}
 
-{% block title %}Bite {{ id }} {% endblock %}
+{% block title %} Bite {{ id }} {% endblock %}
 {% block head %}
-    {{ super() }}
+{{ super() }}
 {% endblock %}
 
 <!-- content -->
@@ -13,20 +13,21 @@
 
 
 
-<h4 style="padding-top: 10px;">BITE {{ id }}</h4>
+<h2>BITE {{ id }}</h2>
+<br>
 <p>This is the code for Bite {{ id }}</p>
 
 <div class="row">
-		<div class="col">
+	<div class="col">
 
 		<h4>A + B</h4>
 		<p>Author:
-		<br>Short Description:
-		<br>Date Modified:
+			<br>Short Description:
+			<br>Date Modified:
 		</p>
 	</div>
 </div>
-<div style= "border: 1px black solid; height: 100px"  class="col mt-5">
-	</div>
+<div style="border: 1px black solid; height: 100px" class="col mt-5">
+</div>
 {% endblock %}
 <!-- content -->
