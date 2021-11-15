@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 {% extends "layouts/base.html" %}
 
 {% block title %} Home {% endblock %}
 {% block head %}
-    {{ super() }}
+{{ super() }}
 {% endblock %}
-=======
-{% extends "layouts/base.html" %} {% block title %} Home {% endblock %} {% block
-head %} {{ super() }} {% endblock %}
->>>>>>> master
 
 <!-- content -->
 {% block content %}
@@ -66,12 +61,8 @@ head %} {{ super() }} {% endblock %}
       Run
     </button>
     <label> <input id="compile_only" type="checkbox" />Compile Only </label>
-	<div id="loader" class="loader">Loading...</div>
-    <div
-      id="container"
-      style="width: 600px; height: 400px; border: 1px solid rgb(151, 134, 134)"
-      class="mt-3"
-    ></div>
+    <div id="loader" class="loader">Loading...</div>
+    <div id="container" style="width: 600px; height: 400px; border: 1px solid rgb(151, 134, 134)" class="mt-3"></div>
 
     <h5>Output</h5>
     <div id="output" class="p-2 rounded-3"></div>
