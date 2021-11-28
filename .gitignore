@@ -6,7 +6,11 @@ __pycache__/
 # C extensions
 *.so
 #Hapy
-/hapy-land/sql_app.db
+*/sql_app.db
+
+# npm
+
+node_modules/
 
 # Distribution / packaging
 .Python

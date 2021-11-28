@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+<br>
+<br>
+
+
+<div class="container">
+	<form>
+		<label for="username">Username</label>
+		<input type="text" name="username"> 
+		<label for="password">Password</label> 
+		<input type="password" name="password"> 
+      	<button class="btn btn-primary me-md-2" type="button">Login</button>
+      	<label>
+     		<input type="checkbox" checked="checked" name="remember"> Remember me
+   		</label>
+    	</div> 
+
+    	<br>
+
+    	<div class="container">
+    		<button type="button" class="cancelbtn">Cancel</button>
+    		<span class="password">Forgot <a href="/login">password?</a></span>
+    	</div>
+	</form>
+</div>
+
+
+{% endblock %}

@@ -2,10 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from dotenv import load_dotenv
+import os
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-# "postgresql://postgres:1234567890Aa@localhost:5432/hapy-land-db"
+load_dotenv()
 
+ENV = os.getenv("ENV").strip()
+SQLALCHEMY_DATABASE_URL = os.getenv(f"{ENV}_DB_URL").strip()
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

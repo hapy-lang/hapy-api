@@ -30,5 +30,16 @@ def bites(request: Request):
 def bite(request: Request, id: str):
     return templates.TemplateResponse("bite.html", {"request": request, "id": id})
 
+@frontend.get("/login", response_class=HTMLResponse)
+def login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@frontend.get("/register", response_class=HTMLResponse)
+def register(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
+
+@frontend.get("/editor", response_class=HTMLResponse)
+def editor(request: Request):
+    return templates.TemplateResponse("editor.html", {"request": request})
 
 
