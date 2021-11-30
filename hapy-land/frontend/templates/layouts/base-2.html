@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block head %}
     <!-- <link rel="stylesheet" href="style.css" /> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> {%block markup%}{%endblock%}
+
     <title>{% block title %}{% endblock %} - Hapy Land</title>
     {% endblock %}
 </head>
+
+<body class="container bg-light p-1 text-dark bg-opacity-60">
+    <!-- Navigation bar -->
+    {%block navabar_admin%}{% include "partials/navbar-2.html" %}{%endblock%}
+    <main class="container-fluid">
+
+        <div class="row">
+            {%block side_nav%}{%include "partials/side-nav.html"%} {%endblock%} {%block content%} {%endblock%}
+        </div>
+
+    </main>
+    <footer>
+        {%block footer_admin%}{%endblock%}
+    </footer>
+
+</body>
+
+</html>

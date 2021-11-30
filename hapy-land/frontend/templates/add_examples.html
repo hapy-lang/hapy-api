@@ -1,0 +1,78 @@
+{% extends "layouts/base.html" %} {%block title%}Add Examples{%endblock%} {%block head%} {{ super() }}
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+{%endblock%} {%block content%}
+<div class="col-10">
+    <h1>Add Examples(challenges)</h1>
+    <form action="" method="POST" id="add_example_form">
+        <div class="form-group row">
+            <label for="challenge_title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control text-uppercase" id="challenge_title" placeholder="Title" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="challenge_description" class="col-sm-2 col-form-label">Challenge</label>
+            <div class="col-sm-10">
+                <textarea class="form-control mt-3 mb-3" id="challenge_description" placeholder="Enter your challenge" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-end justify">
+            <label for="challenge_submit"></label>
+            <input type="submit" class="btn btn-primary" id="challenge_submit" value="Submit Challenge">
+        </div>
+    </form>
+</div>
+<script>
+    const easyMDE = new EasyMDE({
+        element: document.getElementById('challenge_description'),
+        autofocus: true,
+        autosave: {
+            uniqueId: "osmosis",
+            enabled: true,
+            text: "Autosaved",
+            delay: 10000
+        }
+    });
+
+    const submit_btn = document.getElementById("challenge_submit");
+    submit_btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        title = document.getElementById("challenge_title");
+        description = easyMDE.value();
+
+        req_body = {
+            title: title.value,
+            description: description
+        }
+
+        fetch("/api/challenges/", {
+                method: "POST",
+                body: JSON.stringify(req_body),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + JSON.parse(localStorage.getItem("hapyland_token"))
+                }
+            })
+            .then(async function(response) {
+
+                if (response.ok) {
+                    let res = await response.json();
+
+                    //Reset the form fields 
+                    easyMDE.value("");
+                    title.value = "";
+                    window.alert("Question has successfully been added!")
+                }
+
+            })
+            .catch(function(error) {
+
+                console.log("error: ", error);
+
+            })
+    })
+</script>
+{%endblock%}
