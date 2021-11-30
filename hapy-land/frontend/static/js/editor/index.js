@@ -1,10 +1,10 @@
 require.config({ paths: { vs: 'static/node_modules/monaco-editor/min/vs' } });
 
 // elements
-var outputContainer =  document.getElementById("output");
+var outputContainer = document.getElementById("output");
 var pythonCodeContainer = document.getElementById("python_code");
 
-require(['vs/editor/editor.main'], function () {
+require(['vs/editor/editor.main'], function() {
 
     monaco.languages.register({
         id: 'hapy'
@@ -34,11 +34,11 @@ require(['vs/editor/editor.main'], function () {
     // });
 
     let select = document.getElementById("themeselect");
-	let currentTheme = "vs";
-	select.onchange = function () {
-		currentTheme = select.options[select.selectedIndex].value;
-		monaco.editor.setTheme(currentTheme);
-	};
+    let currentTheme = "vs";
+    select.onchange = function() {
+        currentTheme = select.options[select.selectedIndex].value;
+        monaco.editor.setTheme(currentTheme);
+    };
 });
 
 function getCode() {
@@ -55,8 +55,8 @@ function getCode() {
 
 function reset() {
     outputContainer.innerText = "";
-            outputContainer.style.borderColor = "initial";
-            pythonCodeContainer.innerText = "!"
+    outputContainer.style.borderColor = "initial";
+    pythonCodeContainer.innerText = "!"
 }
 
 function loading() {
@@ -86,10 +86,10 @@ async function runcode() {
     fetch('api/run', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(req_body)
-      }).then(async function(response) {
+    }).then(async function(response) {
         // ...
         console.log(response);
         if (response.ok) {
@@ -99,14 +99,14 @@ async function runcode() {
             console.log(res);
 
             if (res.status == "error" || res.data.error) {
-            outputContainer.innerText = res.data.error;
-            outputContainer.style.borderColor = "red";
-            pythonCodeContainer.innerText = "ERROR!";
+                outputContainer.innerText = res.data.error;
+                outputContainer.style.borderColor = "red";
+                pythonCodeContainer.innerText = "ERROR!";
             } else {
                 outputContainer.innerText = res.data.python_result;
                 pythonCodeContainer.innerText = res.data.python_source;
             }
-        }else {
+        } else {
             console.log(response);
 
             outputContainer.innerText = "ERROR!";

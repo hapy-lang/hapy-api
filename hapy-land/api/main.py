@@ -1,5 +1,14 @@
 from datetime import datetime
-from fastapi import FastAPI, status, Depends, HTTPException, Response, File, UploadFile, Form
+from fastapi import (
+    FastAPI,
+    status,
+    Depends,
+    HTTPException,
+    Response,
+    File,
+    UploadFile,
+    Form,
+)
 from sqlalchemy.orm import Session
 from typing import Optional
 
@@ -33,8 +42,9 @@ def get_db():
     finally:
         db.close()
 
+
 if not database_exists(engine.url):
-        create_database(engine.url)
+    create_database(engine.url)
 
 models.Base.metadata.create_all(engine)
 
@@ -58,15 +68,16 @@ def execute(req):
                 error = result[0]
             translated = code_in_python
 
-
             return {
                 "data": {
                     "python_result": python_result,
                     "python_source": translated,
-                    "error": error
+                    "error": error,
                 },
                 "status": "success" if (python_result or translated) else "error",
-                "message": "Hapy output" if not error else "Error while compiling Hapy!",
+                "message": "Hapy output"
+                if not error
+                else "Error while compiling Hapy!",
             }
         return {
             "data": {"python_result": None, "python_source": None},
@@ -79,6 +90,7 @@ def execute(req):
             "status": "error",
             "message": "Error while compiling Hapy",
         }
+
 
 @api.post("/run", response_model=RequestResponse, status_code=status.HTTP_200_OK)
 def run(item: Request):

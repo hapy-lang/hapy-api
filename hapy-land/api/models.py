@@ -7,7 +7,7 @@ from sqlalchemy import (
     String,
     TIMESTAMP,
     Text,
-    event
+    event,
 )
 from sqlalchemy.orm import relationship
 
@@ -64,12 +64,9 @@ class BiteBase(Base):
     # the version of the code/solution
     version = Column(Integer, default=1)
     # whether it's a solution or pure bite
-    type = Column(String(20), nullable=False, default='bite')
+    type = Column(String(20), nullable=False, default="bite")
 
-    __mapper_args__ = {
-        'polymorphic_on': type,
-        'polymorphic_identity':'bite'
-    }
+    __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "bite"}
 
     def __repr__(self) -> str:
         return f"<Bite ({self.type}) id: {self.id}, title: {self.title}, owner: @{self.uploaded_by.username}, created: {self.created_at}>"
@@ -79,9 +76,8 @@ class Solution(BiteBase):
     challenge_id = Column(Integer, ForeignKey("challenges.id"))
     challenge = relationship("Challenge", back_populates="solutions")
 
-    __mapper_args__ = {
-        'polymorphic_identity':'solution'
-    }
+    __mapper_args__ = {"polymorphic_identity": "solution"}
+
 
 # from: https://docs.sqlalchemy.org/en/14/orm/inheritance.html
 
@@ -99,12 +95,14 @@ class Challenge(Base):
     def __repr__(self) -> str:
         return f"<Challenge id: {self.id}, title: '{self.title}', solutions: {len(self.solutions)}>"
 
+
 # event.listen(Challenge.title, 'set', Challenge.generate_slug, retval=False)
 
-@event.listens_for(Challenge.title, 'set')
+
+@event.listens_for(Challenge.title, "set")
 # @event.listens_for(BiteBase.title, 'set')
 def generate_slug(target, value, oldvalue, initiator):
-    print('generating slug', value)
+    print("generating slug", value)
     if value and (not target.slug or value != oldvalue):
         target.slug = slugify(value)
-        print('slug', target.slug)
+        print("slug", target.slug)
