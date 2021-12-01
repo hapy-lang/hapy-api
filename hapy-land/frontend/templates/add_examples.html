@@ -2,8 +2,12 @@
 <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
 <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
 {%endblock%} {%block content%}
-<div class="col-10">
-    <h1>Add Examples(challenges)</h1>
+<!-- Features section-->
+<section class="py-5" id="features" style="border-top: solid #152e12 5px">
+    <div class="container px-5 my-5">
+      <div class="row gx-5">
+        <div class="col-lg-10 mb-5 mb-lg-0">
+            <h2 class="fw-bolder mb-0">Add Examples(challenges)</h2>
     <form action="" method="POST" id="add_example_form">
         <div class="form-group row">
             <label for="challenge_title" class="col-sm-2 col-form-label">Title</label>
@@ -25,6 +29,9 @@
         </div>
     </form>
 </div>
+</div>
+</div>
+</section>
 <script>
     const easyMDE = new EasyMDE({
         element: document.getElementById('challenge_description'),
@@ -61,7 +68,7 @@
                 if (response.ok) {
                     let res = await response.json();
 
-                    //Reset the form fields 
+                    //Reset the form fields
                     easyMDE.value("");
                     title.value = "";
                     window.alert("Question has successfully been added!")

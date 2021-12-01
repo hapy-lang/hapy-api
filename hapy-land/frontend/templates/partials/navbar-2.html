@@ -1,6 +1,8 @@
 <nav class="container navbar navbar-expand-lg navbar-light" style="font: bold 16px sans-serif; padding: 10px 10px 5px 5px; margin-top: 20px;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><i class="bi-gem" style="font-size: 1.5rem; color: green;"></i></a>
+        <a class="navbar-brand" href="/">
+            Hapy
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,18 +12,29 @@
                 <a class="nav-link" href="/examples">Examples</a>
                 <a class="nav-link" href="/bites">Bites</a>
                 <a class="nav-link" href="/editor">Editor</a>
+
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-end" style="font-size: 15px;">
 
-            {% if user is defined %}
-            <h5>{{user.username}}</h5>
-            {%endif%}
-
             <a class="btn btn-outline-primary" href="/login">Login</a>
             <a class="btn btn-primary text-light" href="/register">Register</a>
-            <button class="btn btn-secondary me-md-2" type="button">English</button>
-            <button class="btn btn-secondary" type="button">Hausa</button>
+
+            {% if user is defined %}
+            Hello, <span class="text-muted">{{user.username}}</span>
+            <i class="bi bi-person"></i>
+            {%endif%}
+
+            <a class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </a>
         </div>
     </div>
 </nav>

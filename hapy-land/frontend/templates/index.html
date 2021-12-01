@@ -8,70 +8,137 @@
 <!-- content -->
 {% block content %}
 
-<div class="row">
-  <div class="col">
-    <h1 class="mt-5">HapyLand</h1>
-    <p>Hausa & English in Coding Symphony</p>
-    This is the beta release/version of the Hapy site, more changes to come soon
-    :)
 
-    <p></p>
-    <h3>GETTING STARTED</h3>
-    <ol>
-      <li>
-        Check if Python is installed globally. If not, download it
-        <a href="https://www.python.org/downloads/"> here</a>
-      </li>
-      <li>
-        Install Hapy globally. Type in this command in your command prompt:
-        <p></p>
+<header class="text-white" style="background-color: #1d440a;">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-5 col-xl-5 col-xx-12 pe-4">
+              <div class="my-5 text-center text-xl-start">
+                  <h1 class="display-5 fw-bolder text-white mb-2">
+                    <img src="static/images/logo.svg" height="60px" />
+                    Hapy</h1>
+                  <p class="lead fw-normal text-white-50 mb-4">
+                    Write Python in Hausa
+                  </p>
 
-        <p style="background-color: gray; height: 30px">
-          <strong>pip install Hapy</strong>
-        </p>
-      </li>
+                  <ol class="m-0 p-0">
+                    <li>
+                      Install Hapy from Pip. Type in this command in your command prompt:
 
-      <li>
-        Then check if the installation was successful by typing this command on
-        a new line:
+                      <div class="alert alert-info p-2 text-weight-bold">
+                       pip install Hapy
+                      </div>
+                    </li>
 
-        <p></p>
+                    <li>
+                      Then check if the installation was successful
+                      <div class="alert alert-info p-2 text-weight-bold">
+                        hapy --version
+                      </div>
+                    </li>
 
-        <p style="background-color: gray; height: 30px">
-          <strong>hapy --version</strong>
-        </p>
-      </li>
+                    <li>
+                      Congratulations! Hapy is now installed on your system. Check out example
+                      codes <a href="/examples">here</a>
+                    </li>
 
-      <li>
-        Congratulations! Hapy is now installed on your system. Check out example
-        codes <a href="/examples">here</a>
-      </li>
-    </ol>
+                    <p class="text-muted">
+                      Make sure you have Python installed o
+                      <a href="https://www.python.org/downloads/"> here</a>
+                    </p>
+                  </ol>
+              </div>
+          </div>
+          <div class="col-xl-7 col-xxl-12 d-xl-block ps-3">
+            <div id="editor" class="col mt-2" style="position: relative;">
+              <span>Select Theme:</span>
+              <select id="themeselect">
+                <option>vs</option>
+                <option>vs-dark</option>
+                <option>hc-dark</option>
+              </select>
+
+              <button onclick="runcode()" style="float: right; z-index: 1; position: absolute;top: 55px; right: 14px;"
+               class="btn btn-outline-dark shadow-sm">
+                Run  <i class="bi bi-play"></i>
+              </button>
+              <label> <input id="compile_only" type="checkbox" />Compile Only </label>
+              <div id="loader" class="loader">Loading...</div>
+              <div id="container" style="width: 100%; height: 300px; border: 1px solid rgb(151, 134, 134)" class="mt-3"></div>
+
+              <h5>Output</h5>
+              <div id="output" class="p-2 rounded-3"></div>
+
+              <h5>Python</h5>
+              <div id="python_code" class="p-2 rounded-3"></div>
+            </div>
+          </div>
+      </div>
+
+      <div class="d-grid gap-3 d-sm-flex justify-content-center py-3">
+        <div class="text-center">
+          <p class="mb-1 text-muted">Hapy is developed in Yola, Adamawa, NG <i class="bi bi-heart"></i></p>
+          <a class="btn btn-secondary btn-outline px-4 me-sm-3" href="https://github.com/hapy-lang/hapy">
+            <i class="bi bi-github"></i> Contribute on Github</a>
+      </div>
+      </div>
   </div>
+</header>
 
-  <div id="editor" class="col mt-5">
-    <span>Select Theme:</span>
-    <select id="themeselect">
-      <option>vs</option>
-      <option>vs-dark</option>
-      <option>hc-dark</option>
-    </select>
+  <!-- Features section-->
+  <section class="py-5" id="features"  style="
+  border-top: solid #152e12 5px;
+">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Python and Hausa Symphony</h2>
+            <h4>Featuees of Hapy</h4>
 
-    <button onclick="runcode()" style="float: right" class="btn btn-dark">
-      Run
-    </button>
-    <label> <input id="compile_only" type="checkbox" />Compile Only </label>
-    <div id="loader" class="loader">Loading...</div>
-    <div id="container" style="width: 600px; height: 400px; border: 1px solid rgb(151, 134, 134)" class="mt-3"></div>
+            <ul>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+              <li>Lists</li>
+            </ul>
 
-    <h5>Output</h5>
-    <div id="output" class="p-2 rounded-3"></div>
-
-    <h5>Python</h5>
-    <div id="python_code" class="p-2 rounded-3"></div>
-  </div>
-</div>
-
+          </div>
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h5">Easy to learn</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h5">Natural Language</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                    <div class="col mb-5 mb-md-0 h-100">
+                        <div class="feature bg-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Common Parts</h2>
+                        <p class="mb-0">
+                          - Loops etc
+                        </p>
+                    </div>
+                    <div class="col h-100">
+                        <div class="feature bg-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Supporting tools</h2>
+                        <p class="mb-0">
+                          CLI dem dem
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
 <script src="static/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script src="static/js/editor/monarch-settings.js"></script>
