@@ -45,7 +45,7 @@ function getCode() {
     return [
         "#! lang=hausa",
         "",
-        "aiki gayar() {",
+        "ayyana gayar() {",
         " print('Sannu!');",
         "};",
         "",

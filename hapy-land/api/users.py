@@ -111,7 +111,7 @@ def register_user_using_form(
 
     # TODO: if there's an error while making this user, revert db operation :)
     if form:
-        return RedirectResponse(url="/login", status_code=303)
+        return RedirectResponse(url="/login?show_toast&msg=registered_successfully", status_code=303)
     return Response[schemas.User](
         data=register, status="success", message="User created successfully!"
     )
@@ -143,7 +143,6 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 
 async def get_cookie(hapyland_token: Optional[str] = Cookie(None)):
-    print("Cookie => ", hapyland_token)
     return hapyland_token
 
 
@@ -187,7 +186,6 @@ async def login(
     res.set_cookie(key="hapyland_token", value=user.username)
 
     return res
-
 
 @router.get("/me", response_model=Response[schemas.User])
 async def read_users_me(current_user: UserSchema = Depends(get_current_user)):

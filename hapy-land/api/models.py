@@ -99,10 +99,10 @@ class Challenge(Base):
 # event.listen(Challenge.title, 'set', Challenge.generate_slug, retval=False)
 
 
-@event.listens_for(Challenge.title, "set")
-# @event.listens_for(BiteBase.title, 'set')
-def generate_slug(target, value, oldvalue, initiator):
-    print("generating slug", value)
-    if value and (not target.slug or value != oldvalue):
-        target.slug = slugify(value)
-        print("slug", target.slug)
+# @event.listens_for(Challenge.title, "set")
+# # @event.listens_for(BiteBase.title, 'set')
+# def generate_slug(target, value, oldvalue, initiator):
+#     print("generating slug", value)
+#     if value and (not target.slug or value != oldvalue):
+#         target.slug = slugify(value)
+#         print("slug", target.slug)

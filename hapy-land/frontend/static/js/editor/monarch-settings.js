@@ -23,7 +23,7 @@ function monarchSettings () { return {
         'cikin', 'in',
         'Babu', 'None',
         'dawo', 'return',
-        'aiki', 'def',
+        'ayyana', 'def',
         'Gaskiya', 'True',
         'Karya', 'False',
 

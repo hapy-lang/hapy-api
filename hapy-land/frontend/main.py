@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Depends
 from fastapi.exceptions import HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from api.schemas import User as UserSchema
@@ -46,6 +46,20 @@ def bite(request: Request, id: str):
 def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+@frontend.get("/logout")
+async def logout(user: UserSchema = Depends(get_current_user2),
+):
+    if not user:
+        raise HTTPException(status_code=404, detail="User not logged in")
+
+    res = RedirectResponse(
+        url=f"/?show_toast&msg=logout_success", status_code=303
+    )
+
+    res.set_cookie(key="hapyland_token", value="", expires=-70000)
+
+    return res
+
 
 @frontend.get("/register", response_class=HTMLResponse)
 def register(request: Request):
@@ -73,7 +87,7 @@ async def verify_token(request: Request, token):
 def admin_add_examples(
     request: Request, current_user: UserSchema = Depends(get_current_user2)
 ):
-    if current_user.is_superuser:
+    if current_user and current_user.is_superuser:
         return templates.TemplateResponse(
             "add_examples.html",
             {"request": request, "user": current_user},
