@@ -22,11 +22,11 @@
                             <p class="card-text">
                                 {{i.description}}
                             </p>
-                            <a href="/examples/{{i.id}}" class="btn btn-primary">Attempt this challenge</a>
+                            <a href="/examples/{{i.id}}?i={{i.slug}}" class="btn btn-primary">Attempt this challenge</a>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Author: Lorem, ipsum.</small>
-                            <small class="text-muted mx-3">Last Modified: Lorem, ipsum dolor.</small>
+                            <small class="text-muted">Author: Hapy Admin</small>
+                            <small class="text-muted mx-3">Last Modified: {{ i.updated_at }}.</small>
                         </div>
                     </li>
                     {%endfor%}

@@ -8,7 +8,10 @@
         <div class="row" style="outline:solid rgb(151, 134, 134)">
             <div class="col-md-5 col-xx-12 pe-4 overflow-auto">
                 <div>
-                    {{challenge.title}} <br> {{challenge.description}}
+                    {{challenge.title}}
+                </div>
+                <div id="challenge-desc" data-md="{{challenge.description}}">
+
                 </div>
             </div>
             <div class="col-md-7 d-xl-block ps-3">
@@ -36,8 +39,20 @@
         </header>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="../static/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script src="../static/js/editor/monarch-settings.js"></script>
 <script src="../static/js/editor/index.js"></script>
+
+<script>
+
+    $(function(){
+
+    document.getElementById('challenge-desc').innerHTML =
+      marked.parse($("#challenge-desc").data("md"));
+    });
+
+  </script>
 
 {% endblock %}
