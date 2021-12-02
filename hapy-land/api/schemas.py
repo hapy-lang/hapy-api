@@ -28,6 +28,7 @@ class Request(BaseModel):
     option: str
     compile_only: bool = False
     save: bool = False
+    challenge_id: int
 
     class Config:
         orm_mode = True

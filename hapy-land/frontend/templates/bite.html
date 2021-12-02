@@ -1,9 +1,4 @@
-{% extends "layouts/base.html" %}
-
-{% block title %} Bite {{ id }} {% endblock %}
-{% block head %}
-{{ super() }}
-{% endblock %}
+{% extends "layouts/base.html" %} {% block title %} Bite {{ id }} {% endblock %} {% block head %} {{ super() }} {% endblock %}
 
 <!-- content -->
 {% block content %}
@@ -11,22 +6,22 @@
 <!-- Features section-->
 <section class="py-5" id="features" style="border-top: solid #152e12 5px">
     <div class="container px-5 my-5">
-      <div class="row gx-5">
-        <div class="col-lg-10 mb-5 mb-lg-0">
-            <h2 class="fw-bolder mb-0">BITE {{ id }}</h2>
+        <div class="row gx-5">
+            <div class="col-lg-10 mb-5 mb-lg-0">
+                <h2 class="fw-bolder mb-0">BITE {{ id }}</h2>
 
-<p>This is the code for Bite {{ id }}</p>
+                <p>This is the code for Bite {{ id }}</p>
 
 
 
-		<h4>A + B</h4>
-		<p>Author:
-			<br>Short Description:
-			<br>Date Modified:
-		</p>
-</div>
-</div>
-</div>
+                <h4>A + B</h4>
+                <p>Author:
+                    <br>Short Description:
+                    <br>Date Modified:
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
 <!-- content -->

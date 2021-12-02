@@ -1,4 +1,4 @@
-require.config({ paths: { vs: 'static/node_modules/monaco-editor/min/vs' } });
+require.config({ paths: { vs: '../static/node_modules/monaco-editor/min/vs' } });
 
 // elements
 var outputContainer = document.getElementById("output");
@@ -46,7 +46,7 @@ function getCode() {
         "#! lang=hausa",
         "",
         "ayyana gayar() {",
-        " print('Sannu!');",
+        " nuna('Sannu!');",
         "};",
         "",
         "gayar();"
@@ -67,7 +67,7 @@ function loading() {
     }, 1000)
 }
 
-async function runcode() {
+async function runcode(challenge_id = -1) {
 
     reset();
     loading();
@@ -79,14 +79,17 @@ async function runcode() {
         code,
         option: "execute_only",
         compile_only: compile_only.checked,
-        save: false
+        save: false,
+        challenge_id: challenge_id
     }
 
 
     fetch('api/run', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8',
+            "Authorization": "Bearer " + JSON.parse(localStorage.getItem("hapyland_token"))
+
         },
         body: JSON.stringify(req_body)
     }).then(async function(response) {
@@ -113,6 +116,10 @@ async function runcode() {
             outputContainer.style.borderColor = "red";
             pythonCodeContainer.innerText = "ERROR!";
         }
-    });
+    }).catch(async function(response) {
+        console.log('Code compiled successfully!');
+        let res = await response.json();
+        console.log(res);
+    })
 
 }
