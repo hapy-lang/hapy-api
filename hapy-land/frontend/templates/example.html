@@ -1,38 +1,58 @@
-{% extends "layouts/base.html" %} {% block title %} Bite {{ id }} {% endblock %} {% block head %} {{ super() }} {% endblock %}
+{% extends "layouts/base.html" %} {% block title %} Attempt Challenge {% endblock %} {% block head %} {{ super() }} {% endblock %}
 
 <!-- content -->
 {% block content %}
 <!-- Features section-->
-<section class="py-5" id="features" style="border-top: solid #152e12 5px">
-    <div class="container px-5 my-5">
-      <div class="row gx-5">
-        <div class="col-lg-10 mb-5 mb-lg-0">
-            <h2 class="fw-bolder mb-0">Example {{ id }}</h2>
-<p>
-    These are the solutions to example {{ id }}
-</p>
-        <ul>
-            <li>
-                <h4><a href="">A + B</a></h4>
-                <p>Author:
-                    <br>Short Description:
-                    <br>Date Modified:
-                </p>
+<section class="py-5" id="features">
+    <div class="container">
+        <div class="row" style="outline:solid rgb(151, 134, 134)">
+            <div class="col-md-5 col-xx-12 pe-4 overflow-auto">
+                <div>
+                    {{challenge.title}}
+                </div>
+                <div id="challenge-desc" data-md="{{challenge.description}}">
 
-                <li>
-                    <h4><a href="">A + B</a></h4>
-                    <p>Author:
-                        <br>Short Description:
-                        <br>Date Modified:
-                    </p>
-                </li>
+                </div>
+            </div>
+            <div class="col-md-7 d-xl-block ps-3">
+                <div id="editor" class="col mt-2" style="position: relative;">
+                    <span>Select Theme:</span>
+                    <select id="themeselect">
+                        <option>vs</option>
+                        <option>vs-dark</option>
+                        <option>hc-dark</option>
+                    </select>
 
-        </ul>
+                    <button onclick="runcode('{{challenge.id}}')" style="float: right; z-index: 1; position: absolute;top: 55px; right: 14px;" class="btn btn-outline-dark shadow-sm">Run <i class="bi bi-play"></i></button>
+                    <label> <input id="compile_only" type="checkbox" />Compile Only </label>
+                    <div id="container" style="width: 100%; height: 300px; border: 1px solid rgb(151, 134, 134)" class="mt-3">
+                    </div>
+
+                    <h5>Output</h5>
+                    <div id="output" class="p-2 rounded-3"></div>
+
+                    <h5>Python</h5>
+                    <div id="python_code" class="p-2 rounded-3"></div>
+                </div>
+            </div>
+        </div>
+        </header>
     </div>
-</div>
-</div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../static/node_modules/monaco-editor/min/vs/loader.js"></script>
+<script src="../static/js/editor/monarch-settings.js"></script>
+<script src="../static/js/editor/index.js"></script>
 
+<script>
+
+    $(function(){
+
+    document.getElementById('challenge-desc').innerHTML =
+      marked.parse($("#challenge-desc").data("md"));
+    });
+
+  </script>
 
 {% endblock %}
