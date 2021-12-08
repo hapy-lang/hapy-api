@@ -10,10 +10,11 @@
             <div class="col-md-5 col-xx-12 pe-4">
                 <div class="my-5 text-center text-xl-start">
                     <h1 class="display-5 fw-bolder text-white mb-2">
-                        <img src="static/images/logo-transparent-bg.png" height="70px" /> Hapy
+
+                        <img src="static/images/logo.svg" height="60px" /> Hapy
                     </h1>
-                    <p class="lead fw-normal text-white-80 mb-4">
-                        Write code in Hausa
+                    <p class="lead fw-normal text-white-50 mb-4">
+                        Write Python in Hausa
                     </p>
 
                     <ol class="m-0 p-0">
@@ -36,41 +37,28 @@
                             Congratulations! Hapy is now installed on your system. Check out example codes <a href="/examples">here</a>
                         </li>
 
-                        <p class="text-white-60">
-                            Make sure you have Python installed o
+                        <p class="text-muted">
+                            Make sure you have Python installed
                             <a href="https://www.python.org/downloads/"> here</a>
                         </p>
                     </ol>
                 </div>
             </div>
             <div class="col-md-7 d-xl-block ps-3">
-                <div id="editor" class="col mt-2" style="position: relative;">
-                    <span>Select Theme:</span>
-                    <select id="themeselect">
-            <option>vs</option>
-            <option>vs-dark</option>
-            <option>hc-dark</option>
-          </select>
-
-                    <button onclick="runcode()" style="float: right; z-index: 1; position: absolute;top: 55px; right: 14px;" class="btn btn-outline-dark shadow-sm">Run <i class="bi bi-play"></i></button>
-                    <label> <input id="compile_only" type="checkbox" />Compile Only </label>
-                    <div id="loader" class="loader">Loading...</div>
-                    <div id="container" style="width: 100%; height: 300px; border: 1px solid rgb(151, 134, 134)" class="mt-3">
-                    </div>
-
-                    <h5>Output</h5>
-                    <div id="output" class="p-2 rounded-3"></div>
-
-                    <h5>Python</h5>
-                    <div id="python_code" class="p-2 rounded-3"></div>
-                </div>
+                {%include "partials/editor-base.html"%} {%include "partials/output-base.html"%}
             </div>
+
         </div>
 
         <div class="d-grid gap-3 d-sm-flex justify-content-center py-3">
             <div class="text-center">
+
+                <p class="mb-1 text-muted">Hapy is developed in Yola, Adamawa, NG <i class="bi bi-heart"></i></p>
+                <a class="btn btn-secondary btn-outline px-4 me-sm-3" href="https://github.com/hapy-lang/hapy">
+
                 <p class="mb-1 text-white-80">Hapy is developed in Yola, Adamawa, NG <i class="bi bi-heart"></i></p>
                 <a class="btn btn-warning btn-outline bg-gradient px-4 me-sm-3" href="https://github.com/hapy-lang/hapy" target="_blank">
+
                     <i class="bi bi-github"></i> Contribute on Github</a>
             </div>
         </div>

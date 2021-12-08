@@ -66,6 +66,46 @@ function loading() {
         document.getElementById("loader").style.display = "none";
     }, 1000)
 }
+async function save_code(challenge_id = -1) {
+    loading();
+    let code = window.editor.getValue();
+
+
+    let req_body = {
+        title: "Solution to challenge:" + challenge_id,
+        code: code,
+        description: "N/A"
+
+    }
+    console.log("Sending a request to solution with ID: " + challenge_id)
+    fetch("/api/challenges/" + challenge_id + "/solution", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            "Authorization": "Bearer " + JSON.parse(localStorage.getItem("hapyland_token"))
+
+        },
+        body: JSON.stringify(req_body)
+
+    }).then(async function success(response) {
+        if (response.ok) {
+            let res = await response.json();
+            if (res.status == "success") {
+
+                showToast("Code saved successfully")
+            } else {
+                showToast("Unable to save")
+
+            }
+
+        } else {
+            //console.log(response.status, response)
+            showToast("Unable to save")
+
+
+        }
+    }).catch(e => console.log)
+}
 
 async function runcode(challenge_id = -1) {
 
@@ -84,7 +124,7 @@ async function runcode(challenge_id = -1) {
     }
 
 
-    fetch('api/run', {
+    fetch('/api/run', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -112,9 +152,9 @@ async function runcode(challenge_id = -1) {
         } else {
             console.log(response);
 
-            outputContainer.innerText = "ERROR!";
+            outputContainer.innerText = "ERROR2!";
             outputContainer.style.borderColor = "red";
-            pythonCodeContainer.innerText = "ERROR!";
+            pythonCodeContainer.innerText = "ERROR3!";
         }
     }).catch(async function(response) {
         console.log('Code compiled successfully!');

@@ -17,6 +17,7 @@ from typing import Optional
 # Hapy imports
 from hapy.transpiler import transpile
 from hapy.exector import run as run_python
+from sqlalchemy.util.langhelpers import get_callable_argspec
 from . import crud, schemas
 
 
