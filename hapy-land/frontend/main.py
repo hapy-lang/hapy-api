@@ -127,18 +127,13 @@ async def register(
     )
 
 
-@frontend.get("/editor", response_class=HTMLResponse)
+@frontend.get("/editor/{id}", response_class=HTMLResponse)
 async def editor(
-    request: Request, current_user: UserSchema = Depends(get_current_user2)
+    request: Request, id: int, current_user: UserSchema = Depends(get_current_user2)
 ):
     return templates.TemplateResponse(
         "editor.html", {"request": request, "user": current_user}
     )
-
-
-@frontend.post("/auth/login")
-def login_user():
-    return {"data": "Find me in the main.py of frontend"}
 
 
 @frontend.get("/verify-token/{token}", response_class=HTMLResponse)

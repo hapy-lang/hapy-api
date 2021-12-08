@@ -7,14 +7,14 @@
     <div class="container px-5 my-5">
         <div class="row gx-5">
             <div class="col-lg-10 mb-5 mb-lg-0">
-                <h2 class="fw-bolder mb-0">Examples</h2>
+                <h2 class="fw-bolder mb-0">Improve your Coding Skills by Solving the Following Challenges</h2>
                 <p>Here are some Hapy code examples you could try out on the editor.</p>
 
                 <br />
 
                 <ul>
                     {% for i in examples %}
-                    <li class="card">
+                    <li class="card my-3">
                         <div class="card-header">
                             <h4 class="card-title">{{i.title}} </h4>
                         </div>
@@ -22,11 +22,12 @@
                             <p class="card-text">
                                 {{i.description}}
                             </p>
-                            <a href="/examples/{{i.id}}" class="btn btn-primary">Attempt this challenge</a>
+                            <a href="/examples/{{i.id}}" class="btn btn-primary">Attempt</a>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Author: Lorem, ipsum.</small>
-                            <small class="text-muted mx-3">Last Modified: Lorem, ipsum dolor.</small>
+                            <small class="text-muted">Created at {{i.created_at}}</small>
+                            <small class="text-muted mx-3 text-s-1 text-italic">Last modified on
+                                {{i.updated_at}}</small>
                         </div>
                     </li>
                     {%endfor%}

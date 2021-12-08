@@ -79,6 +79,21 @@ def get_solutions(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Solution).offset(skip).limit(limit).all()
 
 
+def get_solution_by_user(
+    db: Session,
+    user_id: schemas.User.__fields__["id"],
+    challenge_id: schemas.Challenge.__fields__["id"],
+):
+    return (
+        db.query(models.Solution)
+        .filter(
+            models.Solution.submitter_id == user_id,
+            models.Solution.challenge_id == challenge_id,
+        )
+        .first()
+    )
+
+
 def create_solution(
     db: Session,
     item: schemas.BiteCreate,

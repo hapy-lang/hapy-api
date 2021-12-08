@@ -17,6 +17,7 @@ from typing import Optional
 # Hapy imports
 from hapy.transpiler import transpile
 from hapy.exector import run as run_python
+from sqlalchemy.util.langhelpers import get_callable_argspec
 from . import crud, schemas
 
 
@@ -102,14 +103,15 @@ def run(
     """Execute code, transpile code, execute and transpile"""
     if item.code:
         # More conditions can be checked like if the code is correct.
-        if item.save:
+        if item.challenge_id != -1:
             title = crud.get_challenge_by_id(db, item.challenge_id)
             submitter_id = crud.get_user_by_username(db, user)
-            hapy_v = f"Not given as at {datetime.now()}"
+            hapy_v = "N/A"
             bite_item = schemas.BiteCreate(
-                title=title, code=item.code, description="No desc"
+                title="title", code=item.code, description="No desc"
             )
             crud.create_bite(db, bite_item, submitter_id, hapy_v)
+            print("I am in the condition to save!\n\n", item.challenge_id)
         return execute(req=item)
     else:
         return {
