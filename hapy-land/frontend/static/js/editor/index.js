@@ -70,6 +70,7 @@ async function save_code(challenge_id = -1) {
     loading();
     let code = window.editor.getValue();
 
+
     let req_body = {
         title: "Solution to challenge:" + challenge_id,
         code: code,

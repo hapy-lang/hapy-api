@@ -12,10 +12,12 @@ location.search.substr(1).split("&").forEach(function(pair) {
         decodeURIComponent(parts[1].replace(/\+/g, " "));
 });
 
+
 $(document).ready(function() {
 
     // show toasts
     if (location.queryString.hasOwnProperty("show_toast")) {
+
         $(".toast").toast("show");
         $(".toast .toast-body").text(location.queryString.msg);
     }

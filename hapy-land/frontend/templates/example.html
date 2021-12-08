@@ -5,7 +5,9 @@
 <!-- Features section-->
 <section class="py-5" id="features">
     <div class="container">
+
         <div class="row">
+
             <div class="col-md-5 col-xx-12 pe-4 overflow-auto">
                 <div>
                     {{challenge.title}}
@@ -16,12 +18,14 @@
             </div>
             <div class="col-md-7 d-xl-block ps-3">
 
+
                 {%include "partials/editor-base.html"%}
                 <div id="save-container" class="d-flex  flex-row-reverse my-2">
                     <button id="save_btn" onclick="save_code('{{challenge.id}}')" class="btn btn-outline-light shadow-sm btn-dark bg-success">Submit
                         Code</button>
                 </div>
                 {%include "partials/output-base.html"%}
+
             </div>
         </div>
         </header>
@@ -40,5 +44,4 @@
             marked.parse($("#challenge-desc").data("md"));
     });
 </script>
-
 {% endblock %}
