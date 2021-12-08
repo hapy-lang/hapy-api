@@ -1,4 +1,39 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+*{
+	padding:0;
+	margin:0;
+}
+
+html{
+	background-color: #eaf0f2;
+}
+
+body{
+	font:16px/1.6 Arial,  sans-serif;
+}
+
+header{
+	text-align: center;
+	padding-top: 100px;
+	margin-bottom:190px;
+}
+
+header h1{
+	font: normal 32px/1.5 'Open Sans', sans-serif;
+	color: #3F71AE;
+	padding-bottom: 16px;
+}
+
+header h2{
+	color: #F05283;
+}
+
+header span{
+	color: #3F71EA;
+}
+
+
 /* The footer is fixed to the bottom of the page */
 
 footer{
@@ -13,7 +48,7 @@ footer{
 
 
 .footer-distributed{
-	background-color: #2c292f;
+	background-color: #000000;
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
@@ -44,7 +79,7 @@ footer{
 /* The company logo */
 
 .footer-distributed .footer-left img{
-	width: 30%;
+	width: 100%;
 }
 
 .footer-distributed h3 span{
@@ -158,4 +193,24 @@ footer{
 
 	margin-right: 3px;
 	margin-bottom: 5px;
+}
+
+/* Here is the code for Responsive Footer */
+/* You can remove below code if you don't want Footer to be responsive */
+
+
+@media (max-width: 880px) {
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
 }
