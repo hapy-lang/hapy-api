@@ -1,106 +1,100 @@
-{% extends "layouts/base.html" %} {% block title %} Register {% endblock %} {%
-block head %} {{super() }}
+{% extends "layouts/base.html" %} {% block title %} Register {% endblock %} {% block head %} {{super() }}
 
 <style>
-  /* Full-width input fields */
-
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  /* Overwrite default styles of hr */
-
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-  /* Set a style for the submit button */
-
-  .registerbtn {
-    background-color: #04aa6d;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-
-  .registerbtn:hover {
-    opacity: 1;
-  }
-  /* Add a blue text color to links */
-
-  a {
-    color: dodgerblue;
-  }
-  /* Set a grey background color and center the text of the "sign in" section */
-
-  .signin {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
+    /* Full-width input fields */
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+    
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+    /* Overwrite default styles of hr */
+    
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+    /* Set a style for the submit button */
+    
+    .registerbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    
+    .registerbtn:hover {
+        opacity: 1;
+    }
+    /* Add a blue text color to links */
+    
+    a {
+        color: dodgerblue;
+    }
+    /* Set a grey background color and center the text of the "sign in" section */
+    
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
 </style>
 
 {% endblock %} {% block content %}
 
 <!-- Register section-->
 <section class="py-5" id="features" style="border-top: solid #152e12 5px">
-  <div class="container px-5 my-5">
-    <div class="row gx-5">
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h2 class="fw-bolder mb-0">Register</h2>
-        <form action="api/users/register?form=true" method="POST">
-          <label for="username">Username</label>
-          <input type="text" name="username" />
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0 mx-auto">
+                <h2 class="fw-bolder mb-0">Register</h2>
+                <form action="api/users/register?form=true" method="POST">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" />
 
-          <br />
+                    <br />
 
-          <label for="email">E-mail</label>
-          <input type="text" name="email" />
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email" />
 
-          <br />
+                    <br />
 
-          <label for="password">Password</label>
-          <input type="password" name="password" />
+                    <label for="password">Password</label>
+                    <input type="password" name="password" />
 
-          <br />
+                    <br />
 
-          <label for="password">Confirm Password</label>
-          <input type="password" name="confirm_password" />
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="confirm_password" />
 
-          <br />
+                    <br />
 
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <input
-              type="submit"
-              value="Register"
-              class="btn btn-primary me-md-2"
-              type="button"
-            />
-          </div>
-        </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" value="Register" class="btn btn-primary me-md-2" type="button" />
+                    </div>
+                </form>
 
-        <p class="mt-2">
-            Already have an account? <a href="/login">Login here</a>
-        </p>
-      </div>
+                <p class="mt-2">
+                    Already have an account? <a href="/login">Login here</a>
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div></div>
+    <div></div>
 
-  {% endblock %}
+    {% endblock %}
 </section>
