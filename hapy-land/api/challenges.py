@@ -75,14 +75,20 @@ def add_solution_to_challenge(
     challenge_id: int,
     solution: schemas.SolutionCreate,
     db: Session = Depends(get_db),
-    token=Depends(oauth2_scheme),
     current_user: schemas.User = Depends(get_current_user),
 ):
 
+    solution_by_user = crud.get_solution_by_user(
+        db=db, user_id=current_user.id, challenge_id=challenge_id
+    )
     challenge = crud.get_challenge_by_id(db=db, challenge_id=challenge_id)
 
     if challenge is None:
         raise HTTPException(status_code=400, detail="Challenge not created!")
+    if solution_by_user:
+        raise HTTPException(
+            status_code=400, detail="You have already created a solution!"
+        )
 
     created_solution = crud.create_solution(
         db=db,
@@ -97,8 +103,3 @@ def add_solution_to_challenge(
     return Response[schemas.Solution](
         data=created_solution, status="success", message="Solution added successfully!"
     )
-
-
-@router.post("/random")
-def random_endpoint(request: schemas.ChallengeCreate):
-    return {"data": request}

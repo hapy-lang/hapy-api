@@ -1,30 +1,82 @@
-{% extends "layouts/base.html" %} {% block title %} Login {% endblock %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+{% extends "layouts/base.html" %} {% block title %} Login {% endblock %} {% block head %} {{ super() }}
 
 
-<br>
-<br>
+<style>
+    /* Full-width input fields */
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+    
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+    /* Overwrite default styles of hr */
+    
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+    /* Set a style for the submit button */
+    
+    .registerbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    
+    .registerbtn:hover {
+        opacity: 1;
+    }
+    /* Add a blue text color to links */
+    
+    a {
+        color: dodgerblue;
+    }
+    /* Set a grey background color and center the text of the "sign in" section */
+    
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+</style>
+{% endblock %} {% block content %}
 
-
-<div class="container">
-    <form action="/api/users/login" method="POST">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Login" class="btn btn-primary me-md-2" type="button">
-        <label>
+<!-- Login section-->
+<section class="py-5" id="features" style="border-top: solid #152e12 5px">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0 mx-auto">
+                <h2 class="fw-bolder mb-0">Login</h2>
+                <form action="/api/users/login" method="POST">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                    <input type="submit" value="Login" class="btn btn-primary me-md-2" type="button">
+                    <!-- <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-</div>
-
-<br>
-
-<div class="container">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="password"> <a href="/login">Forgot password?</a></span>
-</div>
-</form>
-</div>
+        </label> -->
+                </form>
+                <p class="mt-2">
+                    Don't have an account? <a href="/register">Register instead</a>
+                </p>
+            </div>
+        </div>
+</section>
 
 
 {% endblock %}
