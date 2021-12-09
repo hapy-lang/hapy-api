@@ -4,7 +4,7 @@
   "description": "Website to learn, host challenges of the Hausa Python hapy",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd frontend/static && npm install"
+    "postinstall": "cd hapy-land/frontend/static && npm install"
   },
   "repository": {
     "type": "git",
