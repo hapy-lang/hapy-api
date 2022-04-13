@@ -56,7 +56,7 @@ function getCode() {
 function reset() {
     outputContainer.innerText = "";
     outputContainer.style.borderColor = "initial";
-    pythonCodeContainer.innerText = "!"
+    pythonCodeContainer.innerText = "running..."
 }
 
 function loading() {
