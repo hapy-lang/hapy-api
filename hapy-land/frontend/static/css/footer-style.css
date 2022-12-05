@@ -1,14 +1,11 @@
 /* The footer is fixed to the bottom of the page */
+/* not anymore! :D - LeanKhan */
 
 footer {
-    position: fixed;
     bottom: 0;
 }
 
 @media (max-height: 800px) {
-    footer {
-        position: static;
-    }
     header {
         padding-top: 40px;
     }
