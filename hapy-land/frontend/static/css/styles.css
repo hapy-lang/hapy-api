@@ -97,14 +97,10 @@
 }
 
 footer {
-    position: fixed;
     bottom: 0;
 }
 
 @media (max-height: 800px) {
-    footer {
-        position: static;
-    }
     header {
         padding-top: 10px;
         padding-left: 0px;
