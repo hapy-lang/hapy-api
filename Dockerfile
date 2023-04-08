@@ -11,7 +11,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # copy the hapy-land source to app directory
-COPY ./hapy-land /code/app
+COPY ./app /code/app
 
 # run the uvicorn command
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]

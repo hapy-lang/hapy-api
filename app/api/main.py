@@ -16,19 +16,13 @@ from typing import Optional
 # Hapy imports
 from hapy.transpiler import transpile
 from hapy.exector import run as run_python
-from . import crud, schemas
 
 
 # Local  imports aka imports from the lib.
-from .schemas import Request, User, RequestResponse
+from .schemas import Request, RequestResponse
 
 
 api = FastAPI()
-
-# Create
-# Retrieve
-# Update
-# Delete CRUD
 
 # TODO: maybe should be moved...
 def execute(req):
@@ -72,19 +66,10 @@ def execute(req):
 
 @api.post("/run", response_model=RequestResponse, status_code=status.HTTP_200_OK)
 def run(
-    item: Request, user: Optional[str] = Cookie(None), db: Session = Depends(get_db)
+    item: Request
 ):
     """Execute code, transpile code, execute and transpile"""
     if item.code:
-        # More conditions can be checked like if the code is correct.
-        if item.save:
-            title = crud.get_challenge_by_id(db, item.challenge_id)
-            submitter_id = crud.get_user_by_username(db, user)
-            hapy_v = f"Not given as at {datetime.now()}"
-            bite_item = schemas.BiteCreate(
-                title=title, code=item.code, description="No desc"
-            )
-            crud.create_bite(db, bite_item, submitter_id, hapy_v)
         return execute(req=item)
     else:
         return {
