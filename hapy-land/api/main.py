@@ -11,24 +11,16 @@ from fastapi import (
     UploadFile,
     Form,
 )
-from sqlalchemy.orm import Session
 from typing import Optional
 
 # Hapy imports
 from hapy.transpiler import transpile
 from hapy.exector import run as run_python
-from sqlalchemy.util.langhelpers import get_callable_argspec
 from . import crud, schemas
 
 
 # Local  imports aka imports from the lib.
-from .database import SessionLocal, engine
-from . import models
 from .schemas import Request, User, RequestResponse
-from .users import router as users_router
-from .bites import router as bites_router
-from .challenges import router as challenges_router
-from sqlalchemy_utils import create_database, database_exists
 
 
 api = FastAPI()
@@ -37,24 +29,6 @@ api = FastAPI()
 # Retrieve
 # Update
 # Delete CRUD
-
-# Dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-if not database_exists(engine.url):
-    create_database(engine.url)
-
-models.Base.metadata.create_all(engine)
-
-api.include_router(users_router)
-api.include_router(bites_router)
-api.include_router(challenges_router)
 
 # TODO: maybe should be moved...
 def execute(req):
