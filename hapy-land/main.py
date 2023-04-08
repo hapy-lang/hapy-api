@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from api.main import api
-from frontend.main import frontend
 
 
 app = FastAPI()
@@ -16,4 +15,3 @@ def home():
 
 
 app.mount("/api", api)
-app.mount("/", frontend)
