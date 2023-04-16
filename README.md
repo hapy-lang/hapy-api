@@ -1,7 +1,3 @@
-# hapy-website
-Website to learn, host challenges of the Hausa Python hapy
+# Hapy Api
 
-## credits:
-- Bootstrap 5
-- The Microsoft [Monaco Editor](https://microsoft.github.io/monaco-editor/)
-- FastAPI
+Website at https://github.com/hapy-lang/hapy-website

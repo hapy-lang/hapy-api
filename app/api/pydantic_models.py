@@ -17,13 +17,3 @@ class RequestResponse(BaseModel):
     data: Dict
     status: str
     message: str
-
-
-class User(BaseModel):
-    username: str = "NewUser"
-    password: str
-    timestamp: datetime = datetime.now()
-    email: str
-
-    class Config:
-        orm_mode = True
